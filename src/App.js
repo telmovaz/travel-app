@@ -1,26 +1,43 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.scss";
+import MainContainer from "./components/MainContainer/MainContainer";
+import Header from "./components/Header/Header";
+import data from "./utils/data/data.js";
+import Sidebar from "./components/Sidebar/Sidebar";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends React.Component {
+  state = {
+    hotels: []
+  };
+
+  filterHotels = name => {
+    const filteredHotels = this.state.hotels.filter(hotel => {
+      return hotel.location.toLowerCase().includes(name.toLowerCase());
+    });
+
+    this.setState({
+      hotels: name.length > 0 ? filteredHotels : data
+    });
+    console.log(filteredHotels);
+  };
+
+  componentDidMount() {
+    this.setState({
+      hotels: data
+    });
+  }
+
+  render() {
+    return (
+      <div className="App">
+        <Header filterHotels={this.filterHotels} />
+        <div className="Wrapper">
+          <Sidebar className="Sidebar"/>
+          <MainContainer data={this.state.hotels} />
+        </div>
+      </div>
+    );
+  }
 }
 
 export default App;

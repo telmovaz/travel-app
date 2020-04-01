@@ -1,0 +1,68 @@
+.Sidebar {
+    float:left;
+    margin-right:30px;
+    
+    
+    
+}
+
+.sidebar-thumb {
+    width: 80px;
+    border-radius: 10px;
+    background-color: green;
+    float: left;
+    margin-right:20px;
+    overflow: hidden;
+    
+    
+
+    img {
+        width: 100%;
+        display: block;
+    }
+}
+
+.sidebar-wrapper {
+    height:60px;
+    margin-bottom: 40px;
+    
+}
+.sidebar-text {
+    height: 40px;
+    width: 250px;
+    float:left;
+}
+
+.sidebar-text-title {
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+.sidebar-text-location {
+    color: gray;
+    margin-bottom: 5px;
+}
+.sidebar-text-price {
+    background-color: pink;
+    width: 50px;
+    border-radius: 10px;
+    color:rgb(167, 21, 70);
+    font-weight: bold;
+    font-size: 0.75rem;
+    text-align: center;
+}
+
+.buttom-more {
+    float:left;
+    background-color: gray;
+    width:8px;
+    height:8px;
+    margin-left:5px;
+    border-radius: 100%;
+    
+}
+
+.my-button {
+    
+    width:20px;
+    height:20px;
+}
