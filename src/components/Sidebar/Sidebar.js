@@ -1,7 +1,7 @@
 import React from 'react';
 import './Sidebar.scss';
 import sidebar_data from '../../utils/data/sidebar_data.js';
-import '../../utils/more.png';
+import btnimage from '../../utils/more.png';
 
 class Sidebar extends React.Component {
  
@@ -22,9 +22,10 @@ class Sidebar extends React.Component {
                     <div className="sidebar-text-title">{element.title}</div>
                     <div className="sidebar-text-location">{element.location}</div>
                     <div className="sidebar-text-price">{element.price}</div>
-                </div>  
-                <div className="buttom-more"></div><div className="buttom-more"></div>
-                <img src="../../utils/more.png" alt="" />
+                </div>
+                <div className="sidebar-button">                  
+                <img src={btnimage} alt="" />
+                </div>
             </div>
             
             </div>);

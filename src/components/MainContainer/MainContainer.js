@@ -1,66 +1,21 @@
 import React from 'react';
 import './MainContainer.scss';
 import data from '../../utils/data/data.js';
+import Sidebar from './../Sidebar/Sidebar'
 
-class MainContainer extends React.Component {
-  constructor() {
-    super();
-    // this.sortHotels = this.sortHotels.bind(this);
-    // this.switchSort = this.switchSort.bind(this);
-    this.state = {
-      hotels: [],
-      asc: true
-    };
-  }
-
-  // sortHotels() {
-  //   let aMoreB;
-  //   let bMoreA;
-
-  //   if (this.state.asc) {
-  //       aMoreB = 1;
-  //       bMoreA = -1;
-  //   } else {
-  //     aMoreB = -1;
-  //     bMoreA = 1;
-  //   }
-
-  //   return this.props.data.sort(
-  //     (a,b) => {
-  //       if (a.title > b.title) {
-  //         return aMoreB;
-  //       }else if (b.title > a.title) {
-  //         return bMoreA;
-  //       }else {
-  //         return 0;
-  //       }
-  //     }
-  //   );
-  // }
-  // switchSort() {
-  //   this.setState({
-  //     asc: !this.state.asc,
-  //     hotels: this.sortHotels()
-  //   });
-  // }
-  componentDidMount() {
- //   this.switchSort()
-    
-    
-  }
-
-  componentDidUpdate(prevProps, prevState) {
-  //  this.switchSort();
-  }
-
-  render() {
+const MainContainer = (props) => {
+  
     
     return (
       <div className="main-container">
-        {/* <input type="button" value="change sorting" onClick={this.switchSort} /> */}
-        {this.props.data.map(element => {
+       
+        <div className="tools" style={{width: '100%'}}>
+        <input type="button" value={props.sort ? 'A-Z' : 'Z-A'} onClick={props.switchSort} />
+        </div>
+        {props.data.map(element => {
           return (
             <div className="hotel">
+              
               <img src={element.image} alt="alt text" />
               <div className="hotel__info">
                 <span className="hotel-name">{element.title}</span>
@@ -72,6 +27,6 @@ class MainContainer extends React.Component {
       </div>
     );
   }
-}
+
 
 export default MainContainer;
