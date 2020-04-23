@@ -2,6 +2,7 @@ import React from 'react';
 import './Sidebar.scss';
 import sidebar_data from '../../utils/data/sidebar_data.js';
 import btnimage from '../../utils/more.png';
+import AddHotel from '../AddHotel/AddHotel';
 
 class Sidebar extends React.Component {
  
@@ -13,10 +14,10 @@ class Sidebar extends React.Component {
     <div className="Sidebar">
       <h1>More than just hotels</h1>
         
-        {sidebar_data.map(element => {
+        {sidebar_data.map((element, index) => {
             return (
-                <div>
-            <div className="sidebar-wrapper">
+                <div key={index}>
+            <div className="sidebar-wrapper" >
                 <div className="sidebar-thumb"><img src={element.image} alt=""/></div>
                 <div className="sidebar-text">
                     <div className="sidebar-text-title">{element.title}</div>
@@ -30,8 +31,9 @@ class Sidebar extends React.Component {
             
             </div>);
         })}
+        <AddHotel />
         </div>
-   
+        
 
 
         )
