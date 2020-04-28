@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import axios from 'axios';
 import rates from '../../utils/data/rates'
 import data from "../../utils/data/data";
+import preloader from "../../utils/Spin-1s-200px.gif";
 
 class HomeView extends React.Component {
   state = {
@@ -75,6 +76,8 @@ class HomeView extends React.Component {
 
   componentDidMount() {
     axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels').then((res) => {
+      let preloader = document.querySelector("#preloader");
+        preloader.parentNode.removeChild(preloader);
       this.setState({
         dataFromApi: res.data
       })
@@ -113,6 +116,7 @@ class HomeView extends React.Component {
         <Header filterHotels={this.filterHotels} filterHotelsPrice={this.filterHotelsPrice}/>
         <div className="Wrapper">
         <Sidebar className="Sidebar"/>
+        <div id="preloader"><img src={preloader} alt="preloader" /></div>
           <MainContainer data={this.state.hotels} switchSort={this.switchSort} sort={this.state.sort} convertPrice={this.convertPrice}/>
         </div>
       </div>
