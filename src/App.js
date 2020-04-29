@@ -6,6 +6,7 @@ import HotelView from './views/HotelView/HotelView';
 import LoginView from './views/LoginView/LoginView';
 import RegisterView from './views/RegisterView/RegisterView';
 import TopBar from "./components/TopBar/TopBar";
+import ContactUsView from "./views/ContactUsView/ContactUsView"
 
 
 class App extends React.Component {
@@ -21,6 +22,7 @@ class App extends React.Component {
           <Route path="/hotel/:id" component={HotelView} />
           <Route path="/login" component={LoginView} />
           <Route path="/register" component={RegisterView} />
+          <Route path="/contact-us" component={ContactUsView} />
           <Route path="/" component={HomeView} />
           
           </Switch>

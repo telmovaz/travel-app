@@ -1,5 +1,6 @@
 import React from "react";
 import axios from 'axios';
+import '../RegisterView/RegisterView.scss'
 
 class RegisterView extends React.Component {
 
@@ -33,11 +34,13 @@ class RegisterView extends React.Component {
         <h1>Register</h1>
         <form onSubmit={this.register}>
           <label>Username:</label>
-          <input type="text" name="username" required></input>
+          <input type="text" name="username" required></input><br /><br />
           <label>Email:</label>
-          <input type="email" name="email" required></input>
+          <input type="email" name="email" required></input><br /><br />
           <label>Password:</label>
-          <input type="password" name="password" required></input>
+          <input type="password" name="password" required></input><br /><br />
+          <label>Repeat Password:</label>
+          <input type="password" name="password" required></input><br /><br />
           <input type="submit" value="Register"></input>
         </form>
       </div>
