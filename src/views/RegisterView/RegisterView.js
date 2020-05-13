@@ -40,7 +40,7 @@ class RegisterView extends React.Component {
           <label>Password:</label>
           <input type="password" name="password" required></input><br /><br />
           <label>Repeat Password:</label>
-          <input type="password" name="password" required></input><br /><br />
+          <input type="password" name="password2" required></input><br /><br />
           <input type="submit" value="Register"></input>
         </form>
       </div>

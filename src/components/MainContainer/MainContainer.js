@@ -1,9 +1,8 @@
 import React from 'react';
 import './MainContainer.scss';
-import data from '../../utils/data/data.js';
 import Sidebar from './../Sidebar/Sidebar';
 import {Link} from 'react-router-dom';
-import HotelView from '../../views/HotelView/HotelView';
+import Hotel from '../Hotel/Hotel';
 
 
 const MainContainer = (props) => {
@@ -23,19 +22,9 @@ const MainContainer = (props) => {
         </select>
         </form>
         </div>
-        {props.data.map(element => {
+        {props.data.map((element, index) => {
           return (
-            <Link to={"hotel/" + element.id}>
-            <div className="hotel" key={element.id}>
-              
-              <img src={element.image} alt="alt text" />
-              <div className="hotel__info">
-                <span className="hotel-name">{element.title}</span>
-          <p>{element.location}</p>
-          <p>{element.price}</p>
-              </div>
-            </div>
-            </Link>
+            <Hotel data={element} key={index}/>
           );
         })}
       </div>

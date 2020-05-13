@@ -1,6 +1,8 @@
 import React from "react";
 import "./Header.scss";
 import searchiconimage from "../../utils/search.svg";
+import { connect } from 'react-redux';
+import { saveText } from '../../store/actions/hotels-actions';
 
 
 class Header extends React.Component {
@@ -13,6 +15,9 @@ class Header extends React.Component {
     this.props.filterHotels(event.target.value);
   };
 
+  handleClick = () => {
+    this.props.dispatch(saveText('new text here'));
+  }
   
   render() {
     return (
@@ -32,9 +37,17 @@ class Header extends React.Component {
         </div>
 
         <input type="text" className="min-price" placeholder="Min. price  $$" onChange={this.handleFilterPrice} />
+          <input type="button" value="click" onClick={this.handleClick} />
+          {this.props.savedText}
       </div>
     );
   }
 }
 
-export default Header;
+const mapStateToProps = (state) => {
+  return {
+    savedText: state.text,
+  }
+}
+
+export default connect(mapStateToProps)(Header);

@@ -6,12 +6,14 @@ import axios from 'axios';
 import rates from '../../utils/data/rates'
 import data from "../../utils/data/data";
 import preloader from "../../utils/Spin-1s-200px.gif";
+import { connect } from 'react-redux';
+import { saveHotels } from '../../store/actions/hotels-actions'
 
 class HomeView extends React.Component {
   state = {
     hotels: [],
     sort: true,
-    dataFromApi: null,
+    dataFromApi: [],
     currency: "USD",
   };
 
@@ -27,18 +29,18 @@ class HomeView extends React.Component {
     });
 
     this.setState({
-      hotels: name.length > 0 ? filteredHotels : this.state.dataFromApi,
+      hotels: name.length > 0 ? filteredHotels : this.props.hotels,
     });
     console.log(filteredHotels);
   };
 
   filterHotelsPrice = (price) => {
-    const filteredHotels = this.state.dataFromApi.filter(hotel => {
+    const filteredHotels = this.props.hotels.filter(hotel => {
       return hotel.price >= parseInt(price);
     });
 
     this.setState({
-      hotels: price.length > 0 ? filteredHotels : this.state.dataFromApi,
+      hotels: price.length > 0 ? filteredHotels : this.props.hotels,
     });
   }
 
@@ -54,7 +56,7 @@ class HomeView extends React.Component {
       bMoreA = 1;
     }
 
-    return this.state.dataFromApi.sort((a,b) => {
+    return this.props.hotels.sort((a,b) => {
       if  (a.title > b.title) {
         return aMoreB;
       }else if (b.title > a.title) {
@@ -75,15 +77,19 @@ class HomeView extends React.Component {
 
 
   componentDidMount() {
+    if (this.props.hotels.length===0){
     axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels').then((res) => {
       let preloader = document.querySelector("#preloader");
-        preloader.parentNode.removeChild(preloader);
-      this.setState({
-        dataFromApi: res.data
-      })
+      preloader.parentNode.removeChild(preloader);
+      
+      this.props.saveHotelsToRedux(res.data);
       this.switchSort();
     })
-   
+  } else {
+    this.switchSort();
+    let preloader = document.querySelector("#preloader");
+    preloader.parentNode.removeChild(preloader);
+  }
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -123,5 +129,12 @@ class HomeView extends React.Component {
     );
   }
 }
+const mapStateToProps = (state) => ({
+  hotels: state.hotels
+})
 
-export default HomeView;
+const mapDispatchToProps = (dispatch) => ({
+  saveHotelsToRedux: (hotels) => dispatch(saveHotels(hotels))
+})
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeView);

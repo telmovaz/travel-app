@@ -7,39 +7,73 @@
 }
 
 
-.contact-us-image img {
-    width:30px;
+nav {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    align-items: center;
     vertical-align: middle;
     
-}
-
-.nav-logo {
-    float: left;
-}
-
-.nav-more {
-    float: right;
-    margin-right:30px;
     
-}
-
-.topbar {
-    margin-bottom: 20px;
-    height:30px;
-    padding:20px;
-}
-
-.login-button {
-    background-color: rgba(206, 139, 14, 0.74);
-    border: none;
-    border-radius: 20px;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    margin:0 20px 0 20px;
-    cursor: pointer;
-    
-}
+  
+    .app-logo {
+      font-weight: bold;
+      font-size: 2rem;
+      margin-right: 30px;
+    }
+  
+    .button.secondary,
+    .nav-link {
+      text-decoration: none;
+      color: #666;
+      font-size: 1.2rem;
+      transition: opacity 0.2s ease;
+      vertical-align: middle;
+      height:50px;
+      line-height: 50px;
+      
+      
+  
+      &:hover {
+        opacity: 0.6;
+      }
+    }
+  
+    li {
+      margin: 0 10px;
+    }
+  
+    .right {
+      margin-left: auto;
+      display: flex;
+    }
+  
+    .button {
+      background-color: transparent;
+      border: none;
+      color: #666;
+      font-size: 1rem;
+      margin: 0 5px;
+  
+      &.primary {
+        background-color: #f15f3d;
+        color: white;
+        width: 150px;
+        height: 50px;
+        font-weight: bold;
+        padding: 15px 30px;
+        border-radius: 20px;
+        transition: all 0.1s ease;
+  
+        &.yellow {
+          background-color: rgb(255, 208, 0);
+          color: #333;
+        }
+  
+        &:hover {
+          transform: scale(1.1);
+        }
+      }
+    }
+  }
+  
