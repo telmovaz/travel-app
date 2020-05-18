@@ -2,12 +2,10 @@ import React from "react";
 import MainContainer from "../../components/MainContainer/MainContainer";
 import Header from "../../components/Header/Header";
 import Sidebar from "../../components/Sidebar/Sidebar";
-import axios from 'axios';
 import rates from '../../utils/data/rates'
 import data from "../../utils/data/data";
-import preloader from "../../utils/Spin-1s-200px.gif";
 import { connect } from 'react-redux';
-import { saveHotels } from '../../store/actions/hotels-actions'
+import { getHotels } from '../../store/actions/hotels-actions'
 
 class HomeView extends React.Component {
   state = {
@@ -78,18 +76,8 @@ class HomeView extends React.Component {
 
   componentDidMount() {
     if (this.props.hotels.length===0){
-    axios.get('https://nodejs-mysql-it-academy.herokuapp.com/hotels').then((res) => {
-      let preloader = document.querySelector("#preloader");
-      preloader.parentNode.removeChild(preloader);
-      
-      this.props.saveHotelsToRedux(res.data);
-      this.switchSort();
-    })
-  } else {
-    this.switchSort();
-    let preloader = document.querySelector("#preloader");
-    preloader.parentNode.removeChild(preloader);
-  }
+    this.props.getHotels()
+  } 
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -122,8 +110,8 @@ class HomeView extends React.Component {
         <Header filterHotels={this.filterHotels} filterHotelsPrice={this.filterHotelsPrice}/>
         <div className="Wrapper">
         <Sidebar className="Sidebar"/>
-        <div id="preloader"><img src={preloader} alt="preloader" /></div>
-          <MainContainer data={this.state.hotels} switchSort={this.switchSort} sort={this.state.sort} convertPrice={this.convertPrice}/>
+        
+          <MainContainer data={this.props.hotels} switchSort={this.switchSort} sort={this.state.sort} convertPrice={this.convertPrice}/>
         </div>
       </div>
     );
@@ -134,7 +122,7 @@ const mapStateToProps = (state) => ({
 })
 
 const mapDispatchToProps = (dispatch) => ({
-  saveHotelsToRedux: (hotels) => dispatch(saveHotels(hotels))
+  getHotels: (hotels) => dispatch(getHotels())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeView);
