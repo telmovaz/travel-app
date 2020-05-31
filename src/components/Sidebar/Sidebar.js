@@ -2,7 +2,6 @@ import React from "react";
 import "./Sidebar.scss";
 import btnimage from "../../utils/more.png";
 import AddHotel from "../AddHotel/AddHotel";
-import preloader from "../../utils/Spin-1s-200px.gif";
 import Modal from "../Modal/Modal";
 import { connect } from 'react-redux';
 
@@ -37,7 +36,7 @@ class Sidebar extends React.Component {
        
         <h1>More than just hotels</h1>
 
-        {this.props.hotels.map((element, index) => {
+        {this.props.hotels.filter((element) => { return element.recommended}).map((element, index) => {
           
           return (
             <div key={index} className = {element.recommended ? "display-hotel" : "not-display-hotel"}>

@@ -5,7 +5,15 @@
     
 
 }
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 80%;
+}
 
+.sticky + .content {
+  padding-top:60px;
+}
 
 nav {
     list-style: none;
@@ -13,6 +21,9 @@ nav {
     display: flex;
     align-items: center;
     vertical-align: middle;
+    background-color: white;
+    
+   
     
     
   

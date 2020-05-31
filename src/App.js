@@ -12,6 +12,8 @@ import { url } from './utils/api';
 import PrivateRoute from './PrivateRoute';
 import AddHotelView from './views/AddHotelView/AddHotelView';
 import UserHotelsView from './views/UserHotelsView/UserHotelsView';
+import FavouriteView from './views/FavouriteView/FavouriteView';
+import Notification from './components/Notification/Notification'
 
 
 class App extends React.Component {
@@ -51,6 +53,7 @@ class App extends React.Component {
       <div className="App">
         
         <Router>
+          <Notification></Notification>
         <TopBar isAuthorized={this.state.isAuthorized} user={this.state.user} verifyUserStatus={this.verifyUserStatus}/>
           <Switch>
           <Route path="/hotel/:id" component={HotelView} />
@@ -59,6 +62,7 @@ class App extends React.Component {
           <PrivateRoute path="/add-hotel" component={AddHotelView} isAuthorized={this.state.isAuthorized} />
           <Route path="/contact-us" component={ContactUsView} />
           <PrivateRoute path="/my-hotels" component={UserHotelsView} isAuthorized={this.state.isAuthorized} />
+          <Route path="/favourite" component={FavouriteView} />
           <Route path="/" component={HomeView} />
           
           </Switch>

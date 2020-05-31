@@ -8,6 +8,8 @@ import { saveText } from '../../store/actions/hotels-actions';
 class Header extends React.Component {
   state = {};
 
+  inputRef = React.createRef();
+
   handleFilterPrice = (event) => {
     this.props.filterHotelsPrice(event.target.value);
   };
@@ -17,6 +19,10 @@ class Header extends React.Component {
 
   handleClick = () => {
     this.props.dispatch(saveText('new text here'));
+  }
+
+  componentDidMount() {
+    this.inputRef.current.focus();
   }
   
   render() {
@@ -32,6 +38,7 @@ class Header extends React.Component {
               className="search-field"
               placeholder="Enter location"
               onChange={this.handleSearch}
+              ref={this.inputRef}
             />
           </div>
         </div>

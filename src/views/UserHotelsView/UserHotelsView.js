@@ -1,33 +1,21 @@
-import React from "react";
-import axios from "axios";
-import Hotel from "../../components/Hotel/Hotel"
+import React, {useEffect} from "react";
+import Hotel from "../../components/Hotel/Hotel";
+import {useSelector, useDispatch} from 'react-redux';
+import { getUserHotels } from '../../store/actions/hotels-actions'
 
-class UserHotelsView extends React.Component {
-  state = {
-    dataFromApi: [],
-  };
 
-  componentDidMount() {
-    const token = localStorage.getItem("token");
+const UserHotelsView = () => {
+  
+    const hotels = useSelector((state) => state.userHotels);
+    const dispatch = useDispatch();
 
-    const options = {
-      headers: {
-        "Content-type": "multipart/form-data",
-        "x-access-token": token,
-      },
-    };
-    axios
-      .get("https://nodejs-mysql-it-academy.herokuapp.com/my-hotels", options)
-      .then((res) => {
-        this.setState({ dataFromApi: res.data });
-        console.log(this.state.dataFromApi)
-      });
-  }
-  render() {
+    useEffect(() => {
+      dispatch(getUserHotels());
+    }, []);
       
     return (
       <div>
-          {this.state.dataFromApi.map((element) => {
+          {hotels.map((element) => {
               return (
                   <div>
                 <Hotel data={element}/>
@@ -37,7 +25,7 @@ class UserHotelsView extends React.Component {
   }
       </div>
     );
-  }
-}
+  
+};
 
 export default UserHotelsView;

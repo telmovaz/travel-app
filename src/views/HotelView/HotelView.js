@@ -1,54 +1,34 @@
-import React from "react";
-import axios from "axios";
-import { connect } from 'react-redux';
+import React, { useState, useEffect} from 'react';
+import axios from 'axios';
 
-class HotelView extends React.Component {
-  state = {
-    hotel: {
-        title:null,
-        price:null,
-        description:null,
-        wifi: null
-    }
-  };
-
-  componentDidMount() {
+const getHotelData = (id, setHotel) => {
     const API = "https://nodejs-mysql-it-academy.herokuapp.com/hotels/";
-    axios
-      .get(API + this.props.match.params.id)
-      .then((res) => {
-        this.setState({
-          hotel: res.data,
-        });
-      })
-      .catch((error) => {
-        console.log(error);
-      });
-  }
-
-  render() {
-      if (this.state.hotel) {
-
-      }
-    const { title, price, description, wifi} = this.state.hotel;
-    return (
-      <div>
-        {this.props.savedText}
-        <ul>
-          <li>{title}</li>
-          <li>{price}</li>
-          <li>{description}</li>
-          <li>{wifi}</li>
-        </ul>
-      </div>
-    );
-  }
+    axios.get(API + id).then(
+        (response) => {
+            setHotel(response.data)
+        }
+        )
+        .catch((error) => {
+            console.log(error)
+        })
 }
 
-const mapStateToProps = (state) => {
-  return {
-    savedText: state.text
-  }
+const HotelView = (props) => {
+    const [hotel, setHotel] = useState({});
+
+    useEffect(() => {
+        const { id } = props.match.params
+        getHotelData(id, setHotel)
+    }, [])
+
+    return Object.keys(hotel).length > 0 && (
+        <div className='hotel-view'>
+            {hotel.title}
+        </div>
+    )
 }
 
-export default connect(mapStateToProps)(HotelView);
+
+export default HotelView;
+
+

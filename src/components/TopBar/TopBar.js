@@ -4,6 +4,20 @@ import "../TopBar/TopBar.scss";
 
 
 class TopBar extends React.Component {
+
+  state = {
+    scrollClass: '',
+  }
+
+  
+
+  handleScroll = () => {
+    
+    let sticky = 130;    
+    window.pageYOffset >= sticky ? this.setState({scrollClass: 'sticky'}) : this.setState({scrollClass: ''});
+    
+    
+  }
   handleClick = () => {
     this.props.history.push("/login");
   };
@@ -12,13 +26,20 @@ class TopBar extends React.Component {
     this.props.verifyUserStatus();
   };
 
+  componentDidMount() {
+    
+      window.addEventListener('scroll', this.handleScroll)
+    
+  }
+
   render() {
     const { isAuthorized, user } = this.props;
     return (
-      <nav>
+      <nav id='nav' className={this.state.scrollClass}>
         <Link to="/" className="nav-link">
           Home
         </Link>
+        <Link to="/favourite" className="nav-link">Favourites</Link>
         <Link to="/my-hotels" className="nav-link">
           My Hotels
         </Link>
