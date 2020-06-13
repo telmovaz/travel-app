@@ -6,7 +6,7 @@ import './LikeButton.scss';
 import { addToFavourites } from '../../store/actions/hotels-actions';
 
 
-class LikeButton extends React.Component {
+export class LikeButton extends React.Component {
     handleClick = () => {
         
         const {hotel, addToFavourites} = this.props;
