@@ -52,7 +52,7 @@ class App extends React.Component {
     return (
       <div className="App">
         
-        <Router>
+        <Router basename={process.env.PUBLIC_URL}>
           <Notification></Notification>
         <TopBar isAuthorized={this.state.isAuthorized} user={this.state.user} verifyUserStatus={this.verifyUserStatus}/>
           <Switch>
