@@ -1,0 +1,25 @@
+{
+  "files": {
+    "main.css": "/travel-app/static/css/main.21851cf4.chunk.css",
+    "main.js": "/travel-app/static/js/main.7c7c5941.chunk.js",
+    "main.js.map": "/travel-app/static/js/main.7c7c5941.chunk.js.map",
+    "runtime-main.js": "/travel-app/static/js/runtime-main.d37d0c9b.js",
+    "runtime-main.js.map": "/travel-app/static/js/runtime-main.d37d0c9b.js.map",
+    "static/js/2.03625279.chunk.js": "/travel-app/static/js/2.03625279.chunk.js",
+    "static/js/2.03625279.chunk.js.map": "/travel-app/static/js/2.03625279.chunk.js.map",
+    "index.html": "/travel-app/index.html",
+    "precache-manifest.42a6e16d85a89b7b3a0d065785ac2c0f.js": "/travel-app/precache-manifest.42a6e16d85a89b7b3a0d065785ac2c0f.js",
+    "service-worker.js": "/travel-app/service-worker.js",
+    "static/css/main.21851cf4.chunk.css.map": "/travel-app/static/css/main.21851cf4.chunk.css.map",
+    "static/js/2.03625279.chunk.js.LICENSE.txt": "/travel-app/static/js/2.03625279.chunk.js.LICENSE.txt",
+    "static/media/heart-filled.svg": "/travel-app/static/media/heart-filled.2320281b.svg",
+    "static/media/heart.svg": "/travel-app/static/media/heart.5e30bffd.svg",
+    "static/media/search.svg": "/travel-app/static/media/search.c4127766.svg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.d37d0c9b.js",
+    "static/js/2.03625279.chunk.js",
+    "static/css/main.21851cf4.chunk.css",
+    "static/js/main.7c7c5941.chunk.js"
+  ]
+}
