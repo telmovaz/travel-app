@@ -51,6 +51,8 @@ export const removeFromFavourites = (hotelId) => {
     };
 };
 
+
+
 export const getUserHotels = () => {
     return (dispatch) => {
         dispatch({ type: 'GET_USER_HOTELS'});
